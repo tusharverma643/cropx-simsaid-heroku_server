@@ -1,1 +1,1 @@
-web: gunicorn CropX.wsgi
+web: gunicorn CropX.wsgi --log-file -
