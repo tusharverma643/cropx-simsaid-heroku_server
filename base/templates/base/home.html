@@ -13,21 +13,21 @@
     <div class="card 1">
         <div class="card_image"> <img src="{% static 'images/humidity.jpg' %}"/> </div>
         <div class="card_title title-white">
-          <p>Humidity: {{DisplayHumidity}}</p>
+          <p>Humidity: {{DisplayHumidity}} % </p>
         </div>
       </div>
 
       <div class="card 1">
         <div class="card_image"> <img src="{% static 'images/baro.jpg' %}" /> </div>
         <div class="card_title title-white">
-          <p>Atm. Pressure: {{atmosp}}</p>
+          <p>Atm. Pressure: {{atmosp}} hPa</p>
         </div>
       </div>
 
       <div class="card 1">
         <div class="card_image"> <img src="{% static 'images/temp.jpg' %}" /> </div>
         <div class="card_title title-white">
-          <p>Temperature {{MaxTemp}}</p>
+          <p>Temperature {{MaxTemp}} °C</p>
         </div>
       </div> 
 
@@ -41,7 +41,7 @@
       <div class="card 1">
         <div class="card_image"> <img src="{% static 'images/wind.jpg' %}" /> </div>
         <div class="card_title title-white">
-          <p>WindSpeed: {{WindSpeed}}</p>
+          <p>WindSpeed: {{WindSpeed}} m/s</p>
         </div>
       </div>
 
@@ -58,20 +58,21 @@
 
 <h1 id="ss" style="color: black">MODE SELECTION</h1>
 <br>
+{{Mode}}  
 <div id="modewalaform">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <form id="modeform" action="" method="POST">
   {% csrf_token %}
-<div class="modecontainer">
+<div class="modecontainer"> 
         
         <div class="switch-holder">
             <div class="switch-label">
-                <i class="fa fa-sun-o"></i><span>  Econo Mode</span>
+                <i class="fa fa-sun-o"></i><span>  Econo Mode</span> 
             </div>
-            <div class="switch-toggle">
-                <input type="radio" id="eco" name="mode" value=1 onchange="changemode()">
+            <div class="switch-toggle">   
+                <input type="radio" id="eco" name="mode" value=1 {% if Mode == 1 %} checked {% endif %} onchange="changemode()">
                 <label for="eco"></label>
             </div>
         </div>
@@ -81,7 +82,7 @@
                 <i class="fa fa-rocket"></i><span>  Boost Mode</span>
             </div>  
             <div class="switch-toggle">
-                <input type="radio" id="boost" name="mode" value=2 onchange="changemode()">
+                <input type="radio" id="boost" name="mode" value=2 {% if Mode == 2 %} checked {% endif %} onchange="changemode()">
                 <label for="boost"></label>
             </div>
         </div>
@@ -91,7 +92,7 @@
                 <i class="fa fa-android"></i></i><span>  Meteoro Sense</span>
             </div>
             <div class="switch-toggle">
-                <input type="radio" id="mets" name="mode" value=3 onchange="changemode()">
+                <input type="radio" id="mets" name="mode" value=3 {% if Mode == 3 %} checked {% endif %} onchange="changemode()">
                 <label for="mets"></label>
             </div>
         </div>
