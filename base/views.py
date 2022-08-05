@@ -63,15 +63,15 @@ def registerUser(request):
     form = UserCreationForm()
     context={'form': form}
     if request.method == 'POST':
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
+        username=request.POST['username']
+        password=request.POST['password']
+        if User.objects.filter(username=username).exists():
+            messages.error(request,'User already exists.')
+        else:
+            user=User.objects.create_user(username=username,password=password)
             user.save()
             login(request,user)
             return redirect('home')
-        else:
-            messages.error(request,'Please follow the Username and Password Guidelines.')
     return render(request,'base/login_register.html',context) 
 
 @login_required(login_url='login')
