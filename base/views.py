@@ -135,7 +135,7 @@ def userprofile(request):
         labels=dict(y="Air Humidity (%)",x="Time (15 min quaters -prior)"),
         
     )
-    sensorHumidityChart.layout.update(showlegend=False,xaxis=dict(title='Time (Past 15 min interval)'),)
+    sensorHumidityChart.layout.update(showlegend=False,xaxis=dict(title='Time (Past 15 min interval)'),yaxis_range=[0,100])
  
     Humidity=sensorHumidityChart.to_html()
 
