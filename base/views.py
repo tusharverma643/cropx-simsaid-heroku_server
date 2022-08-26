@@ -135,7 +135,7 @@ def userprofile(request):
         labels=dict(y="Air Humidity (%)",x="Time (15 min quaters -prior)"),
         
     )
-    sensorHumidityChart.layout.update(showlegend=False,xaxis=dict(title='Time (15 min quaters)'),)
+    sensorHumidityChart.layout.update(showlegend=False,xaxis=dict(title='Time (Past 15 min interval)'),)
  
     Humidity=sensorHumidityChart.to_html()
 
@@ -145,7 +145,7 @@ def userprofile(request):
         template="plotly_dark",
         labels=dict(y="Soil Moisture (%)",x="Time (15 min quaters -prior)"),
     )
-    sensorMoistureSoilChart.layout.update(showlegend=False,xaxis=dict(title='Time (15 min quaters prior)'))
+    sensorMoistureSoilChart.layout.update(showlegend=False,xaxis=dict(title='Time ( Past 15 min interval )'))
     soilMoisture=sensorMoistureSoilChart.to_html()
 
     sensorTemperatureChart=px.line(
@@ -154,7 +154,7 @@ def userprofile(request):
         template="plotly_dark",
         labels=dict(x="Time (15 min quaters)",y="Soil Temperature (°C)"),
     )
-    sensorTemperatureChart.layout.update(showlegend=False,xaxis=dict(title='Time (15 min quaters -prior)'))
+    sensorTemperatureChart.layout.update(showlegend=False,xaxis=dict(title='Time (Past 15 min interval )'))
     soilTemperature=sensorTemperatureChart.to_html()
     
     context={
