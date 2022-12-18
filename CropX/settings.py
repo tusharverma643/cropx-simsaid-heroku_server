@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-7f$jxn4uz4=j6w28))d1qjqb0dv7^#5lm*$egbmmdj*cq1vg^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cropx-simsaid.herokuapp.com','127.0.0.1',"*"]
+# ALLOWED_HOSTS = ['cropx-simsaid.herokuapp.com','127.0.0.1',"*"]
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -118,11 +119,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
-    BASE_DIR / 'static'
-]
+# STATICFILES_DIRS =[
+#     BASE_DIR / 'static'
+# ]
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
